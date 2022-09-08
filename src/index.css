@@ -58,6 +58,12 @@ code {
   border: 5px solid #e31b6d;
   border-radius: 10rem;
 }
+.skill-effect {
+  transition: transform 1s;
+}
+.skill-effect:hover {
+  transform: rotate(360deg) scale(1.7);
+}
 @keyframes drift {
   from {
     transform: translateX(-100vw);

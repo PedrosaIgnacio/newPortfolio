@@ -30,7 +30,7 @@ export const Experience = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Box textAlign="center">
+      <Box textAlign="center" sx={{width:"50%"}}>
         <Typography p={4} fontFamily="Raleway" variant="h3" color="#FFFFFF">
           Experience
         </Typography>
@@ -45,6 +45,7 @@ export const Experience = () => {
         sx={{
           borderBottom: 1,
           borderColor: "divider",
+          // width:"50%",
         }}
       >
         <Tabs
@@ -53,11 +54,13 @@ export const Experience = () => {
           aria-label="basic tabs example"
           textColor="inherit"
         >
-          <Tab sx={{ color: "white " }} label="Encode" {...allProps(0)} />
-          <Tab sx={{ color: "white " }} label="Freelance" {...allProps(1)} />
+          <Tab sx={{ color: "white" }} label="Encode" {...allProps(0)} />
+          <Tab sx={{ color: "white" }} label="Freelance" {...allProps(1)} />
+          <Tab sx={{ color: "white" }} label="Innovasoft" {...allProps(1)} />
+          <Tab sx={{ color: "white" }} label="Global Think Technology" {...allProps(1)} />
         </Tabs>
       </Box>
-      <Box>
+      <Box sx={{height:"200px"}}>
         {ExperienceInfoList.map((e, ind) => {
           return (
             <TabPanel value={value} index={ind}>

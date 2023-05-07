@@ -1,9 +1,12 @@
 import React from "react";
-import { Box, TextField, Input, Button } from "@mui/material";
+import { Box, TextField, Button, Typography } from "@mui/material";
+import "./ContactForm.css";
+import comingSoon from "../assets/imgs/comingSoon.png"
+
 export const ContactForm = () => {
   return (
     <Box>
-      <Button variant="outlined">Submit</Button>
+      <img src={comingSoon} alt="bgimage"/>
     </Box>
   );
 };

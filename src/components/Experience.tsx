@@ -1,16 +1,10 @@
-import { Box, Divider, Typography, Tabs, Tab } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
+import Timeline from '@mui/lab/Timeline';
 import { ExperienceItem } from "./ExperienceItem";
 import { ExperienceInfoList } from "../data/ExperienceInfo";
-import { TabPanel } from "./TabPanel";
-
-const allProps = (index: number) => {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-};
-
+import { timelineItemClasses } from '@mui/lab/TimelineItem';
+import develop1 from "../assets/imgs/develop-2.png"
 export const Experience = () => {
   const [value, setValue] = React.useState(0);
 
@@ -23,51 +17,38 @@ export const Experience = () => {
       id="#section-experience"
       m={0}
       minHeight="100vh"
-      minWidth="100vw"
+      width="100%"
       bgcolor="#252934"
       display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
+      // flexDirection="column"
+      sx={{
+        alignItems:{xs:"start", sm:"center"}
+      }}
     >
-      <Box textAlign="center" sx={{width:"50%"}}>
-        <Typography p={4} fontFamily="Raleway" variant="h3" color="#FFFFFF">
+      <Box sx={{mt:4, width:{xs:"100%", lg:"55%"}, display:{xs:"initial", sm:"flex"}, flexDirection:"column", alignItems:{xs:"initial", sm:"center"}}}>
+        <Typography variant="h3" color="#e31b6d"fontFamily="Raleway" sx={{ textAlign:{xs:"center", sm:"initial"}, display:"block",letterSpacing:"0.1rem"}}>
           Experience
         </Typography>
-        <Divider
-          variant="middle"
-          color="#e31b6d"
-          sx={{ height: "0.25vh", width: "100%" }}
-        />
+        <Timeline sx={{
+          [`& .${timelineItemClasses.root}:before`]: {
+            flex: 0,
+            padding: 0,
+          },
+        }}>
+          {
+            ExperienceInfoList.map((item) => {
+              return(
+                <ExperienceItem experience={item}/>
+              )
+            })
+          }
+        </Timeline>
       </Box>
-
-      <Box
-        sx={{
-          borderBottom: 1,
-          borderColor: "divider",
-          // width:"50%",
-        }}
-      >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          textColor="inherit"
-        >
-          <Tab sx={{ color: "white" }} label="Encode" {...allProps(0)} />
-          <Tab sx={{ color: "white" }} label="Freelance" {...allProps(1)} />
-          <Tab sx={{ color: "white" }} label="Innovasoft" {...allProps(1)} />
-          <Tab sx={{ color: "white" }} label="Global Think Technology" {...allProps(1)} />
-        </Tabs>
-      </Box>
-      <Box sx={{height:"200px"}}>
-        {ExperienceInfoList.map((e, ind) => {
-          return (
-            <TabPanel value={value} index={ind}>
-              <ExperienceItem {...e} key={ind} />
-            </TabPanel>
-          );
-        })}
+      <Box sx={{mt:4, width:{xs:"100%", sm:"45%"}, display:{xs:"none", lg:"flex"}, flexDirection:{sm:"column"}}}>
+        <Box sx={{width:"70%", height:"50%"}}>
+        <img src={develop1} alt="..." style={{objectFit:"cover", height:"100%", width:"100%"}}/>
+        </Box>
+        {/* <img src={} alt="..."/> */}
       </Box>
     </Box>
   );

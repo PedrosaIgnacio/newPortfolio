@@ -1,5 +1,8 @@
 import encode from "../assets/imgs/logo-encode.png";
 import freelance from "../assets/imgs/freelance.png";
+import innovasoft from "../assets/imgs/logo-innovasoft.png";
+import global from "../assets/imgs/logo-global.png";
+
 export interface ITask {
   id: number;
   description: string;
@@ -59,11 +62,11 @@ export const ExperienceInfoList: Array<IExperienceInfo> = [
 
       {
         id: 2,
-        description: "Libraries: Material UI, Tailwind, Bootstrap",
+        description: "Libraries: Material UI, Tailwind, Bootstrap, Chakra UI",
       },
       {
         id:3,
-        description: "Backend develop"
+        description: "Backend develop (Node Js: Express, NEST)"
       },
       {
         id:4,
@@ -88,6 +91,7 @@ export const ExperienceInfoList: Array<IExperienceInfo> = [
         description: "Libraries: Material UI, Tailwind, Bootstrap",
       }
     ],
+    img: innovasoft,
     id:3,
   },
   {
@@ -98,7 +102,7 @@ export const ExperienceInfoList: Array<IExperienceInfo> = [
     tasks: [
       {
         id: 1,
-        description: "Develop User Interfaces (React)",
+        description: "Develop User Interfaces (React + TypeScript)",
       },
       {
         id: 2,
@@ -106,13 +110,23 @@ export const ExperienceInfoList: Array<IExperienceInfo> = [
       },
       {
         id: 3,
-        description: "Jira, Bitbucket, Confluence, Github",
+        description: "Jira, Bitbucket, Confluence, GIT",
       },
       {
         id: 4,
         description: "Datadog",
-      }
+      },
+      {
+        id: 5,
+        description: "Libraries: Material UI",
+      },
+      {
+        id: 6,
+        description: "Redux Toolkit, Zustand",
+      },
+      
     ],
-    id:3,
+    img: global,
+    id: 3,
   }
 ];

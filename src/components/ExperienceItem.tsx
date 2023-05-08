@@ -1,45 +1,42 @@
-import { Grid, ListItem, ListItemText, Typography } from "@mui/material";
 import React from "react";
+import { List, ListItem, ListItemText, Typography } from "@mui/material";
 import { IExperienceInfo } from "../data/ExperienceInfo";
-import LabelImportantRoundedIcon from "@mui/icons-material/LabelImportantRounded";
+import { TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
 
-export const ExperienceItem = (experience: IExperienceInfo) => {
+interface ExperienceItemProps{
+  experience: IExperienceInfo
+}
+
+export const ExperienceItem = ({experience}: ExperienceItemProps) => {
   return (
     <>
-      <ListItem>
-        <ListItemText
-          primary={experience.position}
-          primaryTypographyProps={{ color: "white" }}
-          secondaryTypographyProps={{ color: "primary", variant: "body2" }}
-          secondary={experience.dateFrom + " - " + experience.dateTo}
-        />
-      </ListItem>
-      {experience.tasks.map((t) => {
-        return (
-          <Grid container spacing={2} gap={1} key={t.id}>
-            <Grid item>
-              <ListItemText
-                secondary={<LabelImportantRoundedIcon />}
-                secondaryTypographyProps={{
-                  color: "#e31b6d",
-                  variant: "body2",
-                }}
-                key={t.id + "icon"}
-              />
-            </Grid>
-            <Grid item color="#FFFFF">
-              <ListItemText
-                secondary={
-                  <Typography color="#FFFFFF" variant="body2">
-                    {t.description}
-                  </Typography>
-                }
-                key={t.id}
-              />
-            </Grid>
-          </Grid>
-        );
-      })}
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot color="inherit" sx={{boxShadow:"none", border:"none", width:"56px", height:"56px"}}>
+            <img src={experience.img} alt=".." style={{ objectFit:"contain", width:"100%", height:"100%" }}/>
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Typography variant="h3" fontFamily="Raleway" sx={{display:"block", color:"white",letterSpacing:"0.1rem", fontSize:"24px !important"}}>
+            {experience.company}
+          </Typography>
+          <Typography variant="h3" fontFamily="Raleway" color="#5f7984" sx={{display:"block",letterSpacing:"0.1rem", fontSize:"16px !important"}}>
+            {experience.position}
+          </Typography>
+          <List>
+            {
+              experience.tasks.map((task) => {
+                return(
+                  <ListItem sx={{ p:0 }} key={task.id}>
+                    <ListItemText secondaryTypographyProps={{ color:"#b1bbc0" }} secondary={task.description} />
+                  </ListItem>
+                )
+              })
+            }
+          </List>
+        </TimelineContent>
+      </TimelineItem>
     </>
   );
 };
